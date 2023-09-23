@@ -1,0 +1,398 @@
+@import "_vars";
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+    font-family: 'Inter', sans-serif;
+    // background: url('./bg.jpg');
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+
+    .heading {
+        text-align: center;
+        margin-bottom: 1rem;
+
+        margin-top: 1rem;
+
+        img {
+            height: 2.8rem;
+        }
+
+        .text {
+            font-size: large;
+
+            .features {
+                color: $primary-blue;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .face {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        min-height: 300px;
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+
+            >:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+
+        img {
+            width: 20rem;
+            height: 20rem;
+            border-radius: 100%;
+            margin-left: 5rem;
+            
+        }
+    }
+
+    .blocks {
+        border: 2px solid $primary-blue;
+        border-radius: 10px;
+        background-color: lighten($primary-blue, 40);
+        overflow-x: auto;
+        display: flex;
+        flex-direction: row-reverse;
+
+        position: relative;
+        align-items: center;
+
+        max-width: 40rem;
+        min-width: 10rem;
+        height: 90px;
+        min-height: 90px;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+        margin-top: 1rem;
+        padding-inline: 0.5rem;
+
+        .noblocks {
+            width: 100%;
+            position: relative;
+            top: 50%;
+            transform: translate(0%, -50%);
+            text-align: center;
+            color: lighten($heart, 10);
+            font-weight: bold;
+        }
+
+        .recent-block {
+            width: 150px;
+            min-width: 150px;
+
+            background-color: $dark7;
+            margin-right: 0.5rem;
+            padding: 0.1rem;
+
+            .head {
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+
+            .filename {
+                color: $primary-blue;
+                font-weight: bold;
+                font-size: small;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+
+            .time {
+                font-size: smaller;
+            }
+        }
+    }
+
+    .empty {
+        height: 1px;
+        min-height: 20px;
+    }
+}
+
+.modal-bg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+
+    background-color: rgba(0, 0, 0, 0.568);
+}
+
+.upload-block {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    height: 100vh;
+    padding-inline: 1rem;
+
+    .title {
+        text-align: center;
+        font-size: x-large;
+        font-weight: bold;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+
+        >* {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+
+            span {
+                font-weight: bold;
+                font-size: small;
+                text-transform: uppercase;
+            }
+
+            input, textarea {
+                outline: none;
+                border: none;
+                background-color: $dark7;
+                width: 17rem;
+
+                height: 2rem;
+                border-radius: 5px;
+
+                border: 2px solid transparent;
+            }
+
+            input:focus, textarea:focus {
+                border: 2px solid $primary-blue;
+            }
+
+            textarea {
+                resize: none;
+                height: 4rem;
+            }
+        }
+    }
+
+    button {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 40px;
+        
+    }
+
+    .cancelNewRecord {
+        margin-top: 0.5rem;
+        background-color: $heart;
+    }
+}
+
+.search-block {
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100vh;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-inline: 1rem;
+
+    .title {
+        text-align: center;
+        font-size: x-large;
+        font-weight: bold;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .controller {
+        display: flex;
+        padding-inline: 0.1rem;
+        .field-control {
+            .field {
+                width: 4.5rem;
+                text-align: center;
+                text-transform: uppercase;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: small;
+                background-color: $primary-blue;
+                color: white;
+                padding-block: 0.2rem;
+                margin-right: 0.2rem;
+                height: 2rem;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px; 
+                user-select: none;
+            }
+            .field-drop {
+                position: absolute;
+                z-index: 100;
+                .aField {
+                    font-size: smaller;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    background-color: $dark6;
+                    cursor: pointer;
+
+                    padding-block: 0.2rem;
+                }
+
+                .odd-field {
+                    background-color: $dark7;
+                }
+            }
+        }
+        .query {
+            input {
+                width: 12rem !important;
+            }
+        }
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+
+        >* {
+            height: 2rem;
+            width: 6rem;
+            margin-top: 0.5rem; 
+        }
+
+        .search-btn {
+            background-color: $green;
+            margin-right: 0.5rem;
+        }
+
+        .cancel-btn {
+            background-color: $heart;
+        }
+    }
+
+    .result {
+        border: 2px solid $primary-blue;
+        width: 95%;
+        margin-top: 1rem;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px;
+        height: 100%;
+
+        border-bottom: none;
+
+        .scrollit {
+            margin-top: -0.8rem;
+            border-top: 2px solid;  
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+    }
+}
+
+
+button {
+    height: 3rem;
+    width: 10rem;
+
+    outline: none;
+    border: none;
+    border-radius: 10px;
+
+    // font-size: ;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    background-color: $primary-blue;
+    color: white;
+}
+
+input, textarea {
+    outline: none;
+    border: none;
+    background-color: $dark7;
+    width: 17rem;
+
+    height: 2rem;
+    border-radius: 5px;
+
+    border: 2px solid transparent;
+}
+
+.resultblock {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    background-color: $dark7;
+    margin-bottom: 0.2rem;
+
+    .head {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .details {
+        font-style: italic;
+        margin-bottom: 0.3rem;
+    }
+
+    .filename {
+        color: $primary-blue;
+        text-transform: uppercase;
+        font-size: smaller;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .time {
+        font-size: small;
+    }
+}
+
+@media (max-width: 580px) {
+    main {
+        justify-content: space-between;
+    }
+
+    .search-block {
+        padding-inline: 0;
+    }
+
+    .face {
+        min-height: 150px !important;  
+    }
+
+    .blocks {
+        margin-right: 5px;
+        margin-bottom: -1rem;
+    }
+
+    .empty {
+        height: 0;
+        min-height: 0;
+    }
+}
